@@ -1,0 +1,9 @@
+slides > slide {
+  background-image:url(../img/back.png);
+  data-background-size:auto auto;
+}
+
+img {
+  max-width:100%;
+  height: auto;
+}
