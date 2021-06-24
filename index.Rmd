@@ -22,7 +22,7 @@ Git est un système de gestion de version distribué pour
 
     - tracker les changement dans les fichiers texte
     - gérer l'historique du code source
-    - partager le code avec des dépots distantes
+    - partager le code avec des dépots distants
   
   
 GitHub et GitLab hébèrgent des dépots distants + des services pour gérer des projets (issue tracking, collaboration, hébergement web, CI/CD)
@@ -36,7 +36,7 @@ GitLab a un modèle open-core. Possibilité d'héberger une instance.
 
 ## Objectif de l'atelier
 
-### Configurer Git et GitHub pour partager une présentation et son code source.
+### **Configurer Git et GitHub pour partager une présentation et son code source.**
 
 
 
@@ -80,15 +80,10 @@ Ouvrir le terminal dans RStudio
 
 ## Installer Git sur sa machine
 
-Écrire 
+Dans le terminal : 
 
 ```{sh}
 which git
-```
-
-et 
-
-```{sh}
 git --version
 ```
 
@@ -103,17 +98,16 @@ https://git-scm.com/download/win
 http://git-scm.com/download/mac
 
 * Linux /  Unix    
-`apt install git`
+`$ apt install git`
 
 
+## Installer Git sur sa machine
 
-## Configurer Git sur sa machine
-
-Dans le terminal
+Dans le terminal :
 
 ```sh
-git config --global user.name 'Riate 2021'
-git config --global user.email 'riate2021@gmail.com'
+git config --global user.name 'username-de-github'
+git config --global user.email 'email-de-github@cnrs.com'
 git config --global --list
 ```
 
@@ -126,64 +120,237 @@ git config --global --list
 
 Il existe 2 méthodes pour faire le lien entre votre machine et GitHub :   
 
-- Un système de jetons (*token*) pour se uttiliser le HTTPS  
+- Un système de jetons (*token*) pour utiliser le HTTPS  
 - Un système de clefs SSH pour se connecter... en SSH  
 
+## Avez vous déjà une paire de clefs SSH
+Dans le terminal :
 
-
-## Créer une paire de clef SSH
-
-Dans le terminal, tapez : 
-
-```bash
-ssh-keygen -t rsa -b 4096 -C "your@e-mail.com"
+```{sh}
+ls -al ~/.ssh/
 ```
 
-Cela va créer 2 fichiers : 
+Si vous voyez une paire de fichier `id_rsa` / `id_rsa.pub`, vous avez déjà une paire de clefs SSH. 
+Vous pouvez passer les étapes de génération de clefs. 
+
+
+
+
+## Générer une paire de clefs SSH
+
+Dans le terminal : 
+
+```sh
+ssh-keygen -t rsa -b 4096 -C "timothee.giraud@cnrz.com"
+```
+
+## Générer une paire de clefs SSH
+![](img/terminal02.png)
+
+Vous pouvez ajouter une *passphrase* ou non.   
+
+2 fichiers sont créés: 
 
 - une clef privée (`~/.ssh/id_rsa`)  
 - une clef publique (`~/.ssh/id_rsa.pub`)
 
 
-## Créer une paire de clef SSH
 
-La clef publique (`~/.ssh/id_rsa.pub`) devra être indiquée dans les paramètres de votre compte GitHub
+## Générer une paire de clefs SSH
 
-La clef privée devra être connue de votre OS.
+La clef publique (`~/.ssh/id_rsa.pub`) devra être indiquée dans les paramètres de votre compte GitHub.   
 
-
-##  Ajouter la clef privée à votre ssh-agent
-
+La clef privée devra être connue de votre OS (avec `ssh-agent`).  
 
 
 ## Ajouter la clef publique sur GitHub
 
-- Copier le contenu du fichier ~/.ssh/id_rsa.pub
+
+![](img/git02.png)
+
+## Ajouter la clef publique sur GitHub
+
+
+![](img/git03.png)
+
+
+
+## Ajouter la clef publique sur GitHub
+![](img/git04.png)  
+<small>Copier ici le contenu du fichier `~/.ssh/id_rsa.pub`</small>
+
+
+##  Ajouter la clef privée à votre `ssh-agent`
+
+Dans le terminal, vérifier que `ssh-agent` est activé : 
+```{sh}
+eval "$(ssh-agent -s)"
+```
+
+Ajouter la clef privée (linux/windows) :  
+```sh
+ssh-add ~/.ssh/id_rsa
+```
+Ajouter la clef privée (Mac OS) :    
+L'opération est un peu plus compliquée, suivre les instructions suivantes https://happygitwithr.com/ssh-keys.html#mac-os
+
+## Vérifier l'installation
+
+Dans le terminal
+```{sh, eval  = FALSE}
+ssh -T git@github.com
+```
+![](img/terminal03.png)
+
 
 
 
 ## Créer un repo git
 
-Créer le repo dans GitHub
-Le cloner sur sa machine
-git add
-git commit 
-git push
+Plusieurs workflows sont possibles pour paramétrer un projet Git/GitHub/Rstudio :   
 
-
-## Servir un markdown
-Grace au GH pages
+- **Un nouveau projet, en commençant par GitHub**  
+- Un projet existant, en commençant par GitHub  
+- Un projet existant, en finissant par GitHub  
 
 
 
+## Créer un dépôt sur GitHub
 
+![](img/git05.png)
+
+## Créer un dépôt sur GitHub
+![](img/git06.png)
+
+## Créer un dépôt sur GitHub
+![](img/git07.png)
+
+## Créer un dépôt sur GitHub
+Copier l'adresse ssh du dépôt.   
+  
+![](img/git08.png)
+
+
+
+## Cloner le dépôt sur sa machine
+Dans le terminal :
+
+```{sh, eval = F}
+git clone git@github.com:rCarto/mon_projet.git
+```
+
+![](img/terminal04.png)
+
+## Créer un projet
+Dans RStudio :   
+
+![](img/rstudio01.png)
+
+## Créer un projet
+![](img/rstudio02.png)
+
+## Créer un projet
+Indiquer le dossier que l'on vient de cloner.   
+
+![](img/rstudio03.png)
+
+
+## Créer un projet
+![](img/rstudio04.png)
+
+
+## Créer une nouvelle présentation 
+
+![](img/rstudio05.png)  
+![](img/rstudio06.png)
+
+
+## Créer une nouvelle présentation 
+Enregistrer et tricoter la présentation sous le nom `index.Rmd`.    
+![](img/rstudio07.png)
+
+## *Commiter* ses changements
+*À faire à chaque fois que l'on a fini une étape significative de travail, surement plusieurs fois par jour.*  
+
+Commiter c'est enregistrer localement (sur sa machine) ses changements pour Git. 
+
+## *Commiter* ses changements
+
+- Cliquer sur l'onglet Git.
+- Cocher la boite "*Staged*" devant tous les fichiers dont on veut enregistrer l'existense ou le changement.
+- Cliquer sur "*Commit*"  
+
+![](img/rstudio08.png)
+
+## *Commiter* ses changements
+
+Indiquer un message pour le *commit*, puis cliquer sur "*Commit*".   
+
+![](img/rstudio09.png)
+
+## *Commiter* ses changements
+
+![](img/rstudio10.png)
+
+## Pousser ses modifications
+
+*À faire quelques fois par jour, moins souvent que les commits.*    
+
+Pousser ses modifications (*Push*) c'est envoyer ses modifications sur le dépôt distant sur GitHub. 
+
+## Pousser ses modifications
+
+**Attention**, il faut d'abord Tirer (*Pull*) depuis GitHub. Cela permet de prendre en compte les modifications faites sur le dépôt par une autre machine ou par un collègue. Cela permet de s'assurer que l'on est à jour avec le dépôt distant.     
+
+![](img/rstudio11.png) 
+
+## Pousser ses modifications
+
+![](img/rstudio12.png)
+
+## Pousser ses modifications
+
+![](img/rstudio13.png)
+
+</br>
+
+</br>
+
+
+
+![](img/rstudio14.png)
+
+## Vérifier les changements sur GitHub
+
+![](img/git09.png)
+
+## Mettre en ligne (servir) la présentation
+Les GitHub Pages permettent de mettre en ligne des fichiers html/css/javascript.   
+
+
+Dans les *settings* du dépôt sur GitHub =>
+
+## Mettre en ligne (servir) la présentation
+
+![](img/git10.png)
+
+
+## Mettre en ligne (servir) la présentation
+Après quelques instants la présentation sera accessible en ligne à l'adresse indiquée!  
+Elle sera automatiquement mise à jour à chaque fois que le dépôt est mis à jour (*Push*). 
+
+![](img/git11.png)
+
+## Mettre en ligne (servir) la présentation
+
+![](img/git12.png)
 
 
 ## Ressource
 ![](img/happy.png)  
 [https://happygitwithr.com/](https://happygitwithr.com/)
 
-
+https://ohshitgit.com/
 
 ##
 ```{r, echo = FALSE}
