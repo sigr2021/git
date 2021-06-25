@@ -20,17 +20,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Git est un système de gestion de version distribué pour  
 
-    - tracker les changement dans les fichiers texte
-    - gérer l'historique du code source
-    - partager le code avec des dépots distants
+  - tracker les changement dans les fichiers texte
+  - gérer l'historique du code source
+  - partager le code avec des dépots distants
   
   
-GitHub et GitLab hébèrgent des dépots distants + des services pour gérer des projets (issue tracking, collaboration, hébergement web, CI/CD)
+GitHub et GitLab hébèrgent des dépots distants + des services pour gérer des projets (issue tracking, collaboration, hébergement web, CI/CD).
 
 
-GitLab a un modèle open-core. Possibilité d'héberger une instance. 
+
+## GitLab sur Huma-num
+
+![](img/huma-num01.png)
 
 
+[![](img/huma-num02.png)](https://documentation.huma-num.fr/gitlab/)
 
 
 
@@ -324,6 +328,15 @@ Pousser ses modifications (*Push*) c'est envoyer ses modifications sur le dépô
 
 ![](img/git09.png)
 
+
+## Et en ligne de commande ?
+
+##
+
+![](img/git.gif)
+
+
+
 ## Mettre en ligne (servir) la présentation
 Les GitHub Pages permettent de mettre en ligne des fichiers html/css/javascript.   
 
@@ -346,16 +359,19 @@ Elle sera automatiquement mise à jour à chaque fois que le dépôt est mis à 
 ![](img/git12.png)
 
 
-## Ressource
+## Ressources
 ![](img/happy.png)  
 [https://happygitwithr.com/](https://happygitwithr.com/)
 
 https://ohshitgit.com/
 
-##
-```{r, echo = FALSE}
-options(width="110")
-x <- sessionInfo()
-print(x, locale=FALSE, RNG = F)
+## À vous !
+
+
+<img src="img/prlogo.png" width=50px />  [sigr2021.github.io/git](https://sigr2021.github.io/git)  
+</br>
+<img src="img/ghlogo.png" width=50px />  [github.com/sigr2021/git](https://github.com/sigr2021/git)  
+</br>
+<img src="img/twlogo.png" width=50px />  [\@rgeomatic](http://twitter.com/rgeomatic)  
 
 
